@@ -5,18 +5,28 @@ program animales {
 	// configuracion de pantalla
 	game.width(15)
 	game.height(15)
+	game.boardGround("granja.jpg")
 
 	/*
 	 * agregamos personajes
 	 */ 
 	var animalActual = new Vaca()
 	game.addVisual(animalActual)
+	
+	var comederoActual = new Comedero()
+	game.addVisual(comederoActual)
+	
+	//saca animal actual y pone gallina
+	keyboard.z().onPressDo({game.removeVisual(animalActual)
+	animalActual = new Gallina()game.addVisual(animalActual)})
+	
+	//saca animal actual y pone vaca
+	keyboard.x().onPressDo({game.removeVisual(animalActual)
+	animalActual = new Vaca()game.addVisual(animalActual)})
+	
 	//game.removeVisual(animalActual)
 	
-	if (animalActual==new Vaca())
-	{keyboard.r().onPressDo({game.removeVisual(new Vaca())}) && keyboard.r().onPressDo({game.addVisual(new Gallina())}
-	else {keyboard.r().onPressDo({game.addVisual(new Gallina())&& keyboard.r().onPressDo({game.removeVisual(new Vaca())})})
-
+	
 	/*
 	 * configuraciones de teclado
 	 */
@@ -30,11 +40,17 @@ program animales {
 	 	else
 	 	{game.say(animalActual, "No tengo sed")}
 	 })
+	 
+	 keyboard.h().onPressDo({
+	 	if(animalActual.hambre())
+	 	{game.say(animalActual, "Tengo hambreeee")}
+	 	else {game.say(animalActual, "No tengo hambre!")}
+	 })
 	
-	keyboard.up().onPressDo({animalActual.position(animalActual.position().up(1))})
-	keyboard.down().onPressDo({animalActual.position(animalActual.position().down(1))})
-	keyboard.left().onPressDo({animalActual.position(animalActual.position().left(1))})
-	keyboard.right().onPressDo({animalActual.position(animalActual.position().right(1))})
+	keyboard.up().onPressDo({animalActual.pierdePeso(); animalActual.position(animalActual.position().up(1)); })
+	keyboard.down().onPressDo({animalActual.pierdePeso(); animalActual.position(animalActual.position().down(1))})
+	keyboard.left().onPressDo({animalActual.pierdePeso();animalActual.position(animalActual.position().left(1))})
+	keyboard.right().onPressDo({animalActual.pierdePeso(); animalActual.position(animalActual.position().right(1))})
 	
 	/*
 	 * arrancamos el juego

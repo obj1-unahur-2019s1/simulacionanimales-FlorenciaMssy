@@ -4,16 +4,29 @@ class Vaca {
 	var property position = game.at(3,5)
 	const property image = "vaca.gif"
 
-	var property peso = 200
 	var property tieneSed = false
+	var property peso = 100
 	
 method comer(kilos){
+	if (self.hambre()){
 	peso = peso + (kilos/2)
-	tieneSed = true
+	tieneSed = true}
+	else {self.error("No tengo hambreee!!")}
 }
 method beber(){
 	peso = peso-1.max(0)
-	tieneSed = false	
+	tieneSed = false	}
+
+method hambre(){
+	return peso < 200
+}
+
+method pierdePeso(){
+	//peso = peso.max(50)*0.95 
+	if (self.peso() == 50)
+	{self.error("No puedo caminar")}
+	
+	peso = 50.max(peso*0.95)
 }
 
 }
@@ -32,5 +45,17 @@ method comer(kilo){
 		{tieneSed = true}
 	else {tieneSed = false}
 }
+method hambre(){
+	return vecesQueComio % 2 == 0
+}
+method pierdePeso(){}
+}
 
+class Comedero{
+	var property position = game.at(7,7)
+	const property image = "comedero.gif"
+	
+method alimentar(){
+	
+}
 }

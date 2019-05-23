@@ -55,7 +55,16 @@ class Comedero{
 	var property position = game.at(7,7)
 	const property image = "comedero.gif"
 	
-method alimentar(){
+	var property tamanioRacion = 6
+	var property pesoMaximo = 300
+	var property raciones = 15
 	
+method puedeAtender(animal){
+	return animal.tieneHambre() && animal.peso() <= pesoMaximo
+	
+}
+method atender(animal){
+	animal.comer(tamanioRacion)
+	raciones = raciones -1
 }
 }

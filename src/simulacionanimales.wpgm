@@ -24,7 +24,16 @@ program animales {
 	keyboard.x().onPressDo({game.removeVisual(animalActual)
 	animalActual = new Vaca()game.addVisual(animalActual)})
 	
-	//game.removeVisual(animalActual)
+	//colisiones
+	game.whenCollideDo(elComedero, (animal => animal.position{animalActual.position().up(1))
+		if(elComedero.puedeAtender(animal)){
+			elComedero.atender(animal)
+			game.say(animal, "Rica la comida"))
+			else {
+				game.say(elComedero, "No te puedo atender")
+			}
+		}
+	})
 	
 	
 	/*
